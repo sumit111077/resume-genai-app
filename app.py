@@ -22,16 +22,16 @@ Responsibilities:
 {tasks}
 
 Resume Bullet Points:"""
-client = OpenAI()
 
-response = client.chat.completions.create(
-    model="gpt-4",
-    messages=[{"role": "user", "content": prompt}],
-    temperature=0.7,
-    max_tokens=200
-)
+    # Updated API call for v1
+    response = openai.ChatCompletion.create(
+        model="gpt-4",
+        messages=[{"role": "user", "content": prompt}],
+        temperature=0.7,
+        max_tokens=200
+    )
 
-return response.choices[0].message.content
+    return response.choices[0].message['content']
 
 # Button to trigger generation
 if st.button("Generate Resume Bullet Points"):
